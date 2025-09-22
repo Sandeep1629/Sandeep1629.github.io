@@ -3,622 +3,742 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumFinTech | Modern Financial Solutions</title>
+    <title>B.N. Sandeep | Flutter Developer & Cloud Specialist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #2ecc71;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --dark: #1e2a47;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
         }
         
         body {
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light);
+            color: #333;
             overflow-x: hidden;
-            background-color: #f9f9f9;
+            line-height: 1.6;
         }
         
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 30px;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow);
         }
         
-        .btn:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
+        .navbar-brand {
             font-weight: 700;
             color: var(--primary);
+            font-size: 1.4rem;
         }
         
-        .logo span {
-            color: var(--secondary);
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            margin: 0 5px;
+            position: relative;
+            transition: all 0.3s;
         }
         
-        .nav-links {
-            display: flex;
-            list-style: none;
+        .nav-link:hover {
+            color: var(--primary);
         }
         
-        .nav-links li {
-            margin-left: 30px;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s;
         }
         
-        .nav-links a {
-            font-weight: 600;
-            transition: color 0.3s ease;
+        .nav-link:hover::after {
+            width: 100%;
         }
         
-        .nav-links a:hover {
-            color: var(--secondary);
+        .navbar .btn-primary {
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 500;
         }
         
         /* Hero Section */
-        .hero {
-            padding-top: 150px;
-            padding-bottom: 80px;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(246,248,252,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070') no-repeat center center;
+            background-size: cover;
             position: relative;
             overflow: hidden;
         }
         
         .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
         
-        .hero-text {
-            flex: 1;
-            padding-right: 30px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-text h1 {
-            font-size: 3.2rem;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
-        .hero-text p {
-            font-size: 1.2rem;
+        .hero-highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(67, 97, 238, 0.2);
+            z-index: -1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
             margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 600px;
+            color: var(--gray);
         }
         
-        .hero-image {
-            flex: 1;
-            animation: fadeInRight 1s ease;
+        .hero-location {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            margin: 25px 0;
+            color: var(--gray);
         }
         
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .hero-btns .btn {
+            margin-right: 15px;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-weight: 500;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
         }
         
-        /* Features Section */
-        .features {
-            background-color: white;
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(67, 97, 238, 0.4);
         }
         
-        .feature-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 15px;
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
             color: var(--primary);
         }
         
-        /* Services Section */
-        .services {
-            background-color: var(--light);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-img {
-            height: 200px;
-            background: linear-gradient(to right, #3498db, #2c3e50);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn-outline-primary:hover {
+            background: var(--primary);
             color: white;
-            font-size: 2.5rem;
         }
         
-        .service-content {
+  .hero-img-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s;
+    width: 100%;
+    max-width: 370px; /* Adjust this as needed */
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 1024/1536; /* Maintain original aspect ratio */
+}
+
+.hero-img-container:hover {
+    transform: perspective(1000px) rotateY(0);
+}
+
+.hero-img {
+    width: 200%;
+    height: auto;
+    object-fit: cover; /* 👈 CAUTION: this may crop portrait images */
+    display: block;
+}
+
+        
+        .floating-element {
+            position: absolute;
+            z-index: 1;
+            border-radius: 50%;
+            background: var(--primary-light);
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.3rem;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: white;
+            border-bottom: 1px solid var(--light-gray);
+            padding: 25px 25px 15px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        
+        .card-body {
             padding: 25px;
         }
         
-        .service-content h3 {
-            margin-bottom: 15px;
+        .tech-badge {
+            background: rgba(67, 97, 238, 0.1);
             color: var(--primary);
+            border-radius: 20px;
+            padding: 6px 15px;
+            margin: 5px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
         
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            text-align: center;
+        /* Skills Section */
+        .skill-category {
+            margin-bottom: 30px;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+        .skill-item {
+            margin-bottom: 25px;
         }
         
-        .stat-item {
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+        }
+        
+        .skill-percent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            background: var(--light-gray);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progress-glow 2s infinite;
+        }
+        
+        @keyframes progress-glow {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+        
+        /* Project Cards */
+        .project-card {
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .project-card .card-header {
             padding: 20px;
         }
         
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .featured-project {
+            border-top: 4px solid var(--accent);
         }
         
-        /* Testimonials */
-        .testimonials {
-            background-color: white;
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
         }
         
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* Contact Section */
+        .contact-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         }
         
-        .testimonial-card {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            height: 100%;
         }
         
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 25px;
         }
         
-        .testimonial-author {
+        .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
         
-        .author-img {
-            width: 50px;
-            height: 50px;
+        .contact-icon {
+            background: rgba(255, 255, 255, 0.15);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: var(--secondary);
-            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
             color: white;
-            font-weight: bold;
-        }
-        
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
             font-size: 1.2rem;
+            margin-right: 12px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            padding: 40px;
+            background: white;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.15);
         }
         
         /* Footer */
         footer {
             background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
             color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
             margin-bottom: 20px;
-            font-size: 1.3rem;
+            display: inline-block;
         }
         
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
         
         .footer-links a {
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
         }
         
         .footer-links a:hover {
-            opacity: 1;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--secondary);
+            color: white;
+            padding-left: 5px;
         }
         
         .copyright {
             text-align: center;
             padding-top: 30px;
+            margin-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
         }
         
-        /* Animations */
+        /* NEW: Animation Enhancements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
+        
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
         
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        
+        /* NEW: Project Grid Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
-        .animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        /* NEW: Contact Card Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
         
-        .animate.animated {
-            opacity: 1;
-            transform: translateY(0);
+        /* NEW: Skill Icons */
+        .skill-icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+            color: var(--primary);
         }
         
-        /* Responsive Design */
+        /* NEW: Profile Image */
+        .profile-img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* NEW: Project Screenshots */
+        .project-screenshot {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* NEW: Section Padding Adjustment */
+        #projects {
+            padding: 120px 0;
+        }
+        
+        /* NEW: Centered Content */
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        /* Responsive Adjustments */
         @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
+            .hero-title {
+                font-size: 2.8rem;
             }
-            
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-                text-align: center;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
-            
-            .nav-links {
-                display: none;
+            section {
+                padding: 80px 0;
+            }
+            .hero-img-container {
+                margin-top: 50px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
             .section-title {
                 font-size: 2rem;
             }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
+            section {
+                padding: 60px 0;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-btns .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <nav>
-                <a href="#" class="logo">Quantum<span>FinTech</span></a>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#" class="btn">Get Started</a></li>
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-code me-2"></i>Sandeep
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
                 </ul>
-            </nav>
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Next Generation Financial Technology Solutions</h1>
-                    <p>Empowering businesses with cutting-edge financial tools and insights to drive growth and maximize profitability in the digital age.</p>
-                    <a href="#" class="btn">Explore Solutions</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content fade-in">
+                    <h1 class="hero-title">Bommabathina Naga Sandeep</span></h1>
+                    <h2 class="hero-subtitle">
+                        Flutter Developer & AWS Cloud Specialist
+                    </h2>
+                    <div class="hero-location">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Vijayawada, Andhra Pradesh, India
+                    </div>
+                    <div class="hero-btns mt-4">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket me-2"></i>View Projects
+                        </a>
+                        <a href="https://www.linkedin.com/in/bommabathina-naga-sandeep-240183247/" target="_blank" class="btn btn-outline-primary">
+                            <i class="fab fa-linkedin me-2"></i>LinkedIn
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="FinTech Dashboard">
-                </div>
-            </div>
-        </div>
+               <div class="col-lg-6 fade-in delay-1">
+    <div class="hero-img-container text-center position-relative" style="position: relative;">
+        <!-- Floating Decorations -->
+        <div class="floating-element" style="width: 200px; height: 200px; top: -50px; right: -50px; position: absolute; background: rgba(0,0,0,0.1); border-radius: 50%;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; bottom: -30px; left: -30px; position: absolute; background: rgba(0,0,0,0.1); border-radius: 50%;"></div>
+        
+        <!-- Portrait Image -->
+        <img src="https://i.ibb.co/ksRP2HBp/Chat-GPT-Image-Jun-18-2025-08-24-35-PM.png"
+             alt="App Development"
+             class="hero-img rounded"
+             style="max-height: 600px; width: auto; height: auto; max-width: 100%; border-radius: 20px;">
+    </div>
+</div>
+
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="section features">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Advanced Analytics</h3>
-                    <p>Harness the power of big data and AI to gain actionable insights into your financial performance.</p>
-                </div>
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Bank-Level Security</h3>
-                    <p>Multi-layered encryption and security protocols to keep your financial data safe and secure.</p>
-                </div>
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Lightning Fast Processing</h3>
-                    <p>Real-time transaction processing and analytics to keep you ahead of the competition.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card animate">
-                    <div class="service-img">
-                        <i class="fas fa-money-check-alt"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Digital Banking Solutions</h3>
-                        <p>Comprehensive digital banking platforms that transform how you manage finances.</p>
-                    </div>
-                </div>
-                <div class="service-card animate">
-                    <div class="service-img">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Investment Management</h3>
-                        <p>AI-powered investment strategies to maximize returns and minimize risks.</p>
-                    </div>
-                </div>
-                <div class="service-card animate">
-                    <div class="service-img">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Fraud Detection</h3>
-                        <p>Advanced machine learning algorithms to detect and prevent fraudulent activities.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item animate">
-                    <div class="stat-number" data-count="250">0</div>
-                    <p>Enterprise Clients</p>
-                </div>
-                <div class="stat-item animate">
-                    <div class="stat-number" data-count="99.7">0</div>
-                    <p>Uptime Percentage</p>
-                </div>
-                <div class="stat-item animate">
-                    <div class="stat-number" data-count="45">0</div>
-                    <p>Million Transactions</p>
-                </div>
-                <div class="stat-item animate">
-                    <div class="stat-number" data-count="12">0</div>
-                    <p>Global Offices</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">Client Testimonials</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card animate">
-                    <div class="testimonial-text">
-                        "QuantumFinTech transformed our financial operations. Their platform is intuitive, powerful, and has saved us countless hours of manual work."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">JD</div>
-                        <div>
-                            <h4>Jane Doe</h4>
-                            <p>CFO, TechCorp Inc.</p>
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4 fade-in">
+                    <div class="card h-100">
+                        <div class="card-header centered-content">
+                            <i class="fas fa-user me-2"></i>Profile Overview
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <img src="https://i.ibb.co/jZgZ88Rj/Chat-GPT-Image-Jun-18-2025-08-49-11-PM.png" alt="Profile" class="profile-img">
+                            </div>
+                            <p class="lead">Passionate Flutter developer and cloud specialist focused on creating secure, high-performance applications.</p>
+                            <p>Currently pursuing education at KL University while building innovative projects that solve real-world problems. I specialize in developing cross-platform mobile applications with Flutter and implementing cloud solutions with AWS.</p>
+                            <div class="mt-4">
+                                <h5 class="centered-content"><i class="fas fa-graduation-cap me-2"></i>Education</h5>
+                                <p class="mb-0 centered-content">Student at KL University</p>
+                                
+                                <h5 class="mt-4 centered-content"><i class="fas fa-certificate me-2"></i>Certifications</h5>
+                                <ul class="mb-0 centered-content">
+                                    <li>2× AWS Certified</li>
+                                    <li>Red Hat EX183 Certified</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card animate">
-                    <div class="testimonial-text">
-                        "The analytics capabilities have given us insights we never thought possible. It's like having a team of financial analysts working 24/7."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">JS</div>
-                        <div>
-                            <h4>John Smith</h4>
-                            <p>Finance Director, GlobalBank</p>
+                <div class="col-lg-6 mb-4 fade-in delay-1">
+                    <div class="card h-100">
+                        <div class="card-header centered-content">
+                            <i class="fas fa-laptop-code me-2"></i>Professional Focus
                         </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate">
-                    <div class="testimonial-text">
-                        "Implementation was seamless, and the ROI was evident within the first quarter. This is the future of financial management."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">RJ</div>
-                        <div>
-                            <h4>Robert Johnson</h4>
-                            <p>CEO, InvestWell Group</p>
+                        <div class="card-body">
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="bg-primary-light text-primary p-3 rounded-circle">
+                                        <i class="fas fa-mobile-alt fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5>Flutter Development</h5>
+                                    <p>Specializing in cross-platform app development with Flutter, creating beautiful and performant applications for both iOS and Android.</p>
+                                    <div class="mt-2">
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">Firebase</span>
+                                        <span class="tech-badge">Bloc</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="bg-primary-light text-primary p-3 rounded-circle">
+                                        <i class="fas fa-cloud fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5>Cloud & DevOps</h5>
+                                    <p>Experienced with AWS services, Docker, and cloud infrastructure management to build scalable applications.</p>
+                                    <div class="mt-2">
+                                        <span class="tech-badge">AWS</span>
+                                        <span class="tech-badge">Docker</span>
+                                        <span class="tech-badge">CI/CD</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="me-3">
+                                    <div class="bg-primary-light text-primary p-3 rounded-circle">
+                                        <i class="fas fa-shield-alt fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5>Security Focus</h5>
+                                    <p>Implementing encryption, secure authentication, and data protection in all applications.</p>
+                                    <div class="mt-2">
+                                        <span class="tech-badge">RSA</span>
+                                        <span class="tech-badge">JWT</span>
+                                        <span class="tech-badge">OAuth</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -626,120 +746,479 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f9fbfd;">
         <div class="container">
-            <h2>Ready to Transform Your Financial Operations?</h2>
-            <p>Join thousands of forward-thinking businesses that have already embraced the future of financial technology.</p>
-            <a href="#" class="btn">Get Started Today</a>
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            <div class="row mt-5">
+                <div class="col-md-6 fade-in">
+                    <div class="skill-category">
+                        <h3 class="mb-4"><i class="fas fa-code skill-icon"></i>Development</h3>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Flutter/Dart</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Firebase</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">REST APIs</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 fade-in delay-1">
+                    <div class="skill-category">
+                        <h3 class="mb-4"><i class="fas fa-cloud skill-icon"></i>Cloud & DevOps</h3>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">AWS Services</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">CI/CD</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mt-5 fade-in">
+                    <div class="skill-category">
+                        <h3 class="mb-4"><i class="fas fa-shield-alt skill-icon"></i>Security</h3>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Encryption (RSA)</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Authentication</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mt-5 fade-in delay-1">
+                    <div class="skill-category">
+                        <h3 class="mb-4"><i class="fas fa-tools skill-icon"></i>Other Technologies</h3>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="tech-badge">Firestore</span>
+                            <span class="tech-badge">Cloud Functions</span>
+                            <span class="tech-badge">FCM</span>
+                            <span class="tech-badge">Bluetooth</span>
+                            <span class="tech-badge">Geofencing</span>
+                            <span class="tech-badge">Generative AI</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid mt-5">
+                <!-- Murmur -->
+                <div class="fade-in">
+                    <div class="card project-card featured-project h-100">
+                        <div class="featured-badge">Featured</div>
+                        <div class="card-header">Murmur - End-to-End Encrypted Messaging</div>
+                        <div class="card-body">
+                            <p class="text-muted">Secure, private messaging app built with Flutter & Firebase featuring true end-to-end encryption.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Military-grade End-to-End Encryption</li>
+                                <li>Private Keys Stored Locally on Device</li>
+                                <li>Edit & Delete Messages Anytime</li>
+                                <li>Username-Based Search</li>
+                                <li>Secure Chat Requests</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">RSA Encryption</span>
+                                <span class="tech-badge">Firestore</span>
+                            </div>
+                            <div class="mt-4">
+                                <a href="https://lnkd.in/ejm6mG2h" target="_blank" class="btn btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-2"></i>Visit App
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CineSeek -->
+                <div class="fade-in delay-1">
+                    <div class="card project-card h-100">
+                        <div class="card-header">CineSeek - Movie Community Platform</div>
+                        <div class="card-body">
+                            <p class="text-muted">Flutter-powered movie collection app designed for the movie community.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Share-worthy movie homepage</li>
+                                <li>Discover recommendations from friends</li>
+                                <li>Track watched and watchlist movies</li>
+                                <li>Community-driven recommendations</li>
+                                <li>Personalized movie feeds</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">TMDB API</span>
+                                <span class="tech-badge">Social Features</span>
+                            </div>
+                            <div class="mt-4">
+                                <a href="https://cineseek.github.io" target="_blank" class="btn btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-2"></i>Visit App
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- HealthSync -->
+                <div class="fade-in delay-2">
+                    <div class="card project-card h-100">
+                        <div class="card-header">HealthSync - Smart Health Guardian</div>
+                        <div class="card-body">
+                            <p class="text-muted">Comprehensive health monitoring system for real-time tracking and emergency response.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Real-Time Health Monitoring (HR, SpO₂, ECG)</li>
+                                <li>Fall Detection with Alerts</li>
+                                <li>Flutter Dashboard with Live Graphs</li>
+                                <li>Smart Hardware Integration (ESP32)</li>
+                                <li>Encrypted Cloud Sync</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">ESP32</span>
+                                <span class="tech-badge">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Voice Translation Chat App -->
+                <div class="fade-in delay-3">
+                    <div class="card project-card h-100">
+                        <div class="card-header">Voice Translation Chat App</div>
+                        <div class="card-body">
+                            <p class="text-muted">Real-time multilingual voice translation app that breaks language barriers.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Real-time Voice Translation</li>
+                                <li>Speech-to-Text & Text-to-Speech</li>
+                                <li>Multiple Languages Support</li>
+                                <li>Conversation Display with Speech Bubbles</li>
+                                <li>User-Friendly Themes & Settings</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Google Generative AI</span>
+                                <span class="tech-badge">Speech Recognition</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Geofencing App -->
+                <div class="fade-in delay-4">
+                    <div class="card project-card h-100">
+                        <div class="card-header">Geofencing - Location-Based Triggers</div>
+                        <div class="card-body">
+                            <p class="text-muted">Advanced geofencing application for location-based notifications and actions.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Real-Time Location Tracking</li>
+                                <li>Geofence Creation with City and Radius</li>
+                                <li>Entry/Exit Notifications</li>
+                                <li>Interactive Google Maps Interface</li>
+                                <li>Customizable Settings</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Google Maps</span>
+                                <span class="tech-badge">Geolocation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Calling Platform -->
+                <div class="fade-in delay-5">
+                    <div class="card project-card h-100">
+                        <div class="card-header">Video Calling Platform with Isolated Channels</div>
+                        <div class="card-body">
+                            <p class="text-muted">Cloud-integrated video calling platform with Telegram bot for channel management.</p>
+                            <h5>Key Features:</h5>
+                            <ul>
+                                <li>Real-Time Video Calling</li>
+                                <li>Isolated Channels for Groups</li>
+                                <li>Telegram Bot Integration</li>
+                                <li>Cross-Platform (Flutter)</li>
+                                <li>AWS & Firebase Backend</li>
+                                <li>Dockerized Deployment</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">AWS</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">Docker</span>
+                                <span class="tech-badge">Telegram Bot</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Projects -->
+                <div class="fade-in delay-6">
+                    <div class="card h-100">
+                        <div class="card-header">Other Notable Projects</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <h5>Bluetooth Scanner</h5>
+                                    <p class="text-muted">Advanced device scanning with Flutter</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h5>Emergency Alerts</h5>
+                                    <p class="text-muted">Location-based emergency system</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h5>24×7 Reminder App</h5>
+                                    <p class="text-muted">Flutter + AWS Lambda/EventBridge</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h5>AI Chat App</h5>
+                                    <p class="text-muted">Google Generative AI integration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f9fbfd;">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-grid mt-5">
+                <div class="fade-in">
+                    <div class="contact-info rounded h-100">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>sandeepnaga763@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Vijayawada, Andhra Pradesh, India</p>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                        <h5 class="mt-5">Connect With Me</h5>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/bommabathina-naga-sandeep-240183247/" target="_blank" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Sandeep1629" target="_blank" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+               <div class="fade-in delay-1">
+    <div class="contact-form rounded h-100">
+        <h3 class="mb-4">Send Me a Message</h3>
+        <form action="https://formspree.io/f/mdkzdwqk" method="POST">
+            <div class="mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="mb-3">
+                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </div>
+</div>
+
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>QuantumFinTech</h3>
-                    <p>Next-generation financial technology solutions for modern businesses.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-code me-2"></i>Sandeep
+                    </a>
+                    <p>Flutter Developer & AWS Cloud Specialist creating secure, high-performance applications.</p>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Navigation</h5>
+                        <a href="#hero">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Solutions</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Digital Banking</a></li>
-                        <li><a href="#">Wealth Management</a></li>
-                        <li><a href="#">Payment Processing</a></li>
-                        <li><a href="#">Risk Analytics</a></li>
-                    </ul>
+                
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Projects</h5>
+                        <a href="#projects">Murmur</a>
+                        <a href="#projects">CineSeek</a>
+                        <a href="#projects">HealthSync</a>
+                        <a href="#projects">Voice Translation</a>
+                        <a href="#projects">Geofencing</a>
+                        <a href="#projects">Video Platform</a>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, San Francisco</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@quantumfintech.com</li>
-                    </ul>
+                
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Connect</h5>
+                        <a href="https://www.linkedin.com/in/bommabathina-naga-sandeep-240183247/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Sandeep1629" target="_blank">GitHub</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Instagram</a>
+                    </div>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2023 QuantumFinTech. All rights reserved.</p>
+                <p>© 2025 BOMMABATHINA NAGA SANDEEP. All rights reserved.</p>
+                <p class="text-muted">Crafted with passion for innovation</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-            }, {
-                threshold: 0.1
             });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
+        });
+        
+        // Navbar effect on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
             });
-            
-            // Animate stats counter
-            const statElements = document.querySelectorAll('.stat-number');
-            const statsSection = document.querySelector('.stats');
-            
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        statElements.forEach(stat => {
-                            const target = parseInt(stat.getAttribute('data-count'));
-                            let count = 0;
-                            const duration = 2000; // in milliseconds
-                            const frameDuration = 1000 / 60; // 60 fps
-                            const totalFrames = Math.round(duration / frameDuration);
-                            let frame = 0;
-                            
-                            const counter = setInterval(() => {
-                                frame++;
-                                const progress = frame / totalFrames;
-                                const currentCount = Math.round(target * progress);
-                                
-                                if (parseInt(stat.innerHTML) !== currentCount) {
-                                    stat.innerHTML = currentCount;
-                                }
-                                
-                                if (frame === totalFrames) {
-                                    clearInterval(counter);
-                                }
-                            }, frameDuration);
-                        });
-                        
-                        // Stop observing after animation
-                        statsObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.5
+        }, observerOptions);
+        
+        // Initialize when page loads
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
             });
-            
-            statsObserver.observe(statsSection);
         });
     </script>
 </body>
